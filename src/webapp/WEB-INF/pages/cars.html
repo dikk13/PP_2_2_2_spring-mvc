@@ -7,12 +7,22 @@
 <body>
 <!--    <h1>th:each</h1>-->
     <table>
+        <thead>
         <tr>
-            <th>№</th>
+            <th>N</th>
             <th>model</th>
             <th>series</th>
             <th>year</th>
         </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car, iterStat : ${cars}">
+            <td th:text="${iterStat.index}+1"></td>
+            <td th:text="${car.model}"></td>
+            <td th:text="${car.series}"></td>
+            <td th:text="${car.year}"></td>
+        </tr>
+        </tbody>
     </table>
 </body>
 </html>
