@@ -14,7 +14,7 @@ import java.util.List;
 @Controller
 public class CarController {
 
-    public static List<Car> cars = new ArrayList<Car>();
+    public static List<Car> cars = new ArrayList<>();
 
     static {
         cars.add(new Car("1", 1, 1));
@@ -25,14 +25,13 @@ public class CarController {
     }
 
     @GetMapping(value = "/cars")
-    public String printCars(@RequestParam(value = "count", required = false) Integer count, Model model) {
-        if (count > 0  & count < 5) {
+    public String printCars(@RequestParam(required = false) Integer count, Model model) {
+        if (count == null || count >= 5) {
+            model.addAttribute(cars);
+        } else if (count > 0) {
             model.addAttribute("cars", new ServiceCarImpl().getCars(count));
-        } else if (count >= 5){
-            model.addAttribute("cars", cars);
-        } else {
-            model.addAttribute("cars", 0);
         }
+//        System.out.println(count);
         return "cars";
     }
 }
