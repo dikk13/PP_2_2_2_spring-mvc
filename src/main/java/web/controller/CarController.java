@@ -1,11 +1,10 @@
 package web.controller;
 
-import model.Car;
-import model.ServiceCarImpl;
+import web.model.Car;
+import web.service.ServiceCarImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
