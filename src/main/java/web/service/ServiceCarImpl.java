@@ -6,7 +6,6 @@ import web.controller.CarController;
 import web.dao.CarDao;
 import web.model.Car;
 
-import java.util.ArrayList;
 import java.util.List;
 @Component
 public class ServiceCarImpl implements ServiceCar{
@@ -19,10 +18,6 @@ public class ServiceCarImpl implements ServiceCar{
 
     @Override
     public List<Car> getCars(int count) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            cars.add(carDao.getCars().get(i));
-        }
-        return cars;
+        return carDao.getCars().subList(0,count);
     }
 }

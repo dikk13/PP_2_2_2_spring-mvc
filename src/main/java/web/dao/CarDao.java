@@ -5,7 +5,7 @@ import web.model.Car;
 
 import java.util.*;
 @Component
-public class CarDao {
+public class CarDao implements CarDaoInt{
 
     private List<Car> cars;
     {

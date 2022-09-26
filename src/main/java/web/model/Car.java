@@ -1,9 +1,6 @@
 package web.model;
 
-import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 public class Car {
 
@@ -40,4 +37,21 @@ public class Car {
     public void setYear(int year) {
         this.year = year;
     }
+
+    @Override
+    public int hashCode() {
+        return 31 * (year+series)/100 + model.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        if (!(model.equals(car.getModel()))) return false;
+        if (! (series == (car.getSeries()))) return false;
+        return (year == (car.getYear()));
+    }
 }
+
+
